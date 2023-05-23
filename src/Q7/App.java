@@ -9,11 +9,11 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 public class App {
     public static void main(String[] args) throws Exception {
         Queue<Integer> fatoresPrimos = new ArrayDeque<Integer>();
-        int numero;
         Scanner scn = new Scanner(System.in);
-
+        
         System.out.println("Digite o numero a ser fatorado: ");
-        numero = scn.nextInt();
+        int numeroInformado = scn.nextInt();
+        int numero = numeroInformado;
 
         for (int i = 2; i <= numero; i++) {
             while (numero % i == 0) {
@@ -31,7 +31,7 @@ public class App {
                fatores += " x ";
             }
         }
-        System.out.println("Os fatores primos de " + numero + " são: " + fatores);
+        System.out.println("Os fatores primos de " + numeroInformado + " são: " + fatores);
         scn.close();
     }
 }
