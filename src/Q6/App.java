@@ -9,21 +9,21 @@ import java.util.Stack;
 public class App {
     public static void main(String[] args) throws Exception {
         Deque<Livro> pilhaLivros = new ArrayDeque<>();
-        boolean continuar;
-        final int qnt = 5;
-        Scanner scn = new Scanner(System.in);
+        final int qnt = 3;
+        Scanner scnStr = new Scanner(System.in);
+        Scanner scnInt = new Scanner(System.in);
 
         System.out.println("Cadastro de Livros");
         for (int i = 0; i < qnt; i++) {
             System.out.println("Livro - " + (i + 1) + ": ");
             System.out.println("Insira o título: ");
-            String titulo = scn.next();
+            String titulo = scnStr.nextLine();
             System.out.println("Insira o(s) nome(s) do(s) autor(es): ");
-            String autores = scn.next();
+            String autores = scnStr.nextLine();
             System.out.println("Insira o número da edição: ");
-            int edicao = scn.nextInt();
+            int edicao = (scnInt.nextInt());
             System.out.println("Insira o ano: ");
-            int ano = scn.nextInt();
+            int ano = (scnInt.nextInt());
 
             Livro livro = new Livro(titulo, autores, edicao, ano);
 
@@ -34,19 +34,24 @@ public class App {
 
                 Stack<Livro> pilhaAuxiliar = new Stack<>();
 
+                // Remoção dos três primeiros elemntos da pilha
                 for (int j = 0; j <= 2; j++) {
                     pilhaAuxiliar.add(pilhaLivros.removeLast());
                 }
                 for (int j = 0; j <= 1; j++) {
                     if (j == 0)
+                        // remoção do antepenultimo item
                         System.out.println(pilhaAuxiliar.pop());
+                    // devolução dos demais itens para a pilha original
                     pilhaLivros.addLast(pilhaAuxiliar.pop());
                 }
+
                 System.out.println(pilhaLivros.toString());
 
             }
 
         }
-        scn.close();
+        scnInt.close();
+        scnStr.close();
     }
 }
